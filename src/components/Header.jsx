@@ -29,7 +29,7 @@ const navLinks = [
 
 const Header = () => {
 	return (
-		<header className="fixed top-0 left-0 right-0 bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
+		<header className="fixed top-0 left-0 right-0 bg-gradient-to-r from-cyan-500 to-blue-500 text-white z-10">
 			<nav className="h-16 container mx-auto flex items-center justify-between">
 				<h1 className="text-2xl font-bold">CODEFEST</h1>
 				<ul className="flex items-center gap-4">

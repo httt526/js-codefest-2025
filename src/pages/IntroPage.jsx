@@ -1,6 +1,6 @@
 // IntroPage.jsx
 const IntroPage = () => {
-	return <div id="intro">Introdution Page</div>;
+	return <div id="intro">Introduction here</div>;
 };
 
 export default IntroPage;
