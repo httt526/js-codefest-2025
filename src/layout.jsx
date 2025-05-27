@@ -1,21 +1,38 @@
 import Header from "./components/Header";
 import { Outlet } from "react-router";
-import Footer from "./components/Footer";
-import backgroundImg from "./assets/images/nencover_resize.png";
+import Loader from "./components/ui/Loader";
+import { useEffect, useState } from "react";
+import ProgressBar from "./components/ui/ProgressBar";
 
 const Layout = () => {
+	const [loading, setLoading] = useState(true);
+	const [progress, setProgress] = useState(0);
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setProgress((prev) => {
+				if (prev < 100) {
+					return prev + 10;
+				} else {
+					clearInterval(interval);
+					setLoading(false);
+					return prev;
+				}
+			});
+		}, 250);
+		return () => clearInterval(interval);
+	}, []);
 	return (
 		<>
-			{/* <Header /> */}
-			<main className="min-h-screen w-full relative py-16">
-				{/* Uncomment the code below to see the background */}
-				{/* <div
-					className="fixed inset-0 bg-cover bg-fixed bg-center bg-no-repeat -z-50"
-					style={{ backgroundImage: `url(${backgroundImg})` }}
-				/> */}
-				<Outlet />
-			</main>
-			{/* <Footer /> */}
+			{loading && <Loader progress={progress} />}
+			{!loading && (
+				<div className="relative">
+					<Header />
+					<ProgressBar />
+					<main id="main" className="min-h-screen w-full py-18">
+						<Outlet />
+					</main>
+				</div>
+			)}
 		</>
 	);
 };
