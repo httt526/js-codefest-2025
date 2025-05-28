@@ -26,7 +26,7 @@ const ReasonPage = () => {
 			<div
 				id="reason"
 				ref={ref}
-				className="w-full h-screen relative grid place-content-center overflow-hidden"
+				className="w-full h-[100vh] relative grid place-content-center overflow-hidden"
 			>
 				<motion.div
 					className="absolute inset-0 z-0"
@@ -56,44 +56,36 @@ const ReasonPage = () => {
 					alt="Table"
 				/>
 			</div>
-			{/* <div className="w-full h-screen grid place-content-center">
-				<div className="grid grid-cols-2 gap-4">
-					<motion.img
-						src={reason1}
-						alt="Reason 1"
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.5 }}
-					/>
-					<motion.img
-						src={reason2}
-						alt="Reason 2"
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.5 }}
-					/>
-					<motion.img
-						src={reason3}
-						alt="Reason 3"
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.5 }}
-					/>
-					<motion.img
-						src={reason4}
-						alt="Reason 4"
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.5 }}
-					/>
-					<motion.img
-						src={reason5}
-						alt="Reason 5"
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.5 }}
-					/>
-				</div>
+			{/* <div className="w-full h-screen flex items-center justify-center flex-col">
+				<motion.div
+					className="hero"
+					initial={{
+						opacity: 0,
+						scale: 0.8,
+					}}
+					whileInView={{
+						opacity: 1,
+						scale: 1,
+					}}
+					transition={{ duration: 1, type: "spring" }}
+				>
+					<div className="hero-content flex-col lg:flex-row-reverse">
+						<img
+							src={reason1}
+							className="max-w-sm rounded-lg shadow-2xl"
+							alt="Reason 1"
+						/>
+						<div>
+							<h1 className="text-5xl font-bold">Reason 1</h1>
+							<p className="py-6">
+								Provident cupiditate voluptatem et in. Quaerat fugiat ut
+								assumenda excepturi exercitationem quasi. In deleniti eaque aut
+								repudiandae et a id nisi.
+							</p>
+							<button className="btn btn-primary">Get Started</button>
+						</div>
+					</div>
+				</motion.div>
 			</div> */}
 		</>
 	);
