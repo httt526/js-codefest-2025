@@ -1,6 +1,10 @@
 // IntroPage.jsx
 const IntroPage = () => {
-	return <div id="intro">Introduction here</div>;
+	return (
+		<div id="intro" className="min-h-screen">
+			Introduction here
+		</div>
+	);
 };
 
 export default IntroPage;

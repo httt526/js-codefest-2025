@@ -1,3 +1,27 @@
 @import "tailwindcss";
-@plugin "flowbite-react/plugin/tailwindcss";
-@source "../.flowbite-react/class-list.json";
+@plugin "daisyui" {
+	themes: night --default;
+}
+
+@font-face {
+	font-family: "Harry Potter";
+	src: url("./assets/fonts/HARRYPOTTER.TTF") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Teddy Bear";
+	src: url("./assets/fonts/CCHELLSHOCKTEDDYBEAR.TTF") format("truetype");
+}
+
+@font-face {
+	font-family: "Treacherous Curves";
+	src: url("./assets/fonts/CCTREACHEROUSCURVES.TTF") format("truetype");
+}
+
+@theme {
+	--font-HP: "Harry Potter", sans-serif;
+	--font-Teddy: "Teddy Bear", sans-serif;
+	--font-Treacherous: "Treacherous Curves", sans-serif;
+}
