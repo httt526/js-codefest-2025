@@ -7,8 +7,8 @@ import { cn } from "../../lib/utils";
 const navItems = [
 	{ name: "Homepage", path: "/" },
 	{ name: "Giới thiệu", path: "/intro" },
-	{ name: "Quyền lợi", path: "/reason" },
 	{ name: "Thông tin cuộc thi", path: "/information" },
+	{ name: "Quyền lợi", path: "/reason" },
 	{ name: "Timeline", path: "/timeline" },
 	{ name: "FAQ", path: "/question" },
 	{ name: "Đăng ký", path: "/form" },
@@ -63,7 +63,7 @@ const ProgressBar = () => {
 	}, [location.pathname, step]);
 	return (
 		<ul
-			className="timeline fixed bottom-0 left-0 right-0 z-10 flex items-center justify-center"
+			className="timeline flex fixed timeline-vertical md:timeline-horizontal bottom-0 left-0 right-0 z-10 md:justify-center md:items-center"
 			ref={progressRef}
 		>
 			{navItems.map((item, index) => (
@@ -76,12 +76,20 @@ const ProgressBar = () => {
 							<hr />
 						))}
 					{index % 2 === 0 && (
-						<div className="timeline-box timeline-start">{item.name}</div>
+						<Link
+							to={item.path}
+							className={`timeline-box font-Teddy font-extrabold text-lg text-shadow-md text-shadow-blue-950 tracking-widest timeline-start ${
+								step === index ? "text-primary animate-pulse" : ""
+							}`}
+						>
+							{item.name}
+						</Link>
 					)}
-					<div
+					<Link
+						to={item.path}
 						className={cn(
 							`timeline-middle`,
-							step > 0 && index <= step ? "text-primary" : ""
+							step >= 0 && index <= step ? "text-primary" : ""
 						)}
 					>
 						<svg
@@ -96,9 +104,16 @@ const ProgressBar = () => {
 								clipRule="evenodd"
 							/>
 						</svg>
-					</div>
+					</Link>
 					{index % 2 !== 0 && (
-						<div className="timeline-box timeline-end">{item.name}</div>
+						<Link
+							to={item.path}
+							className={`timeline-box font-Teddy font-extrabold text-lg text-shadow-md text-shadow-blue-950 tracking-widest timeline-end ${
+								step === index ? "text-primary animate-pulse" : ""
+							}`}
+						>
+							{item.name}
+						</Link>
 					)}
 					{index !== navItems.length - 1 &&
 						(step > index ? <hr className="bg-primary" /> : <hr />)}
@@ -110,139 +125,3 @@ const ProgressBar = () => {
 };
 
 export default ProgressBar;
-
-{
-	/* <li>
-<div className="timeline-start timeline-box">Homepage</div>
-<div className="timeline-middle">
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 20 20"
-		fill="currentColor"
-		className=" size-8"
-	>
-		<path
-			fillRule="evenodd"
-			d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-			clipRule="evenodd"
-		/>
-	</svg>
-</div>
-<hr />
-</li>
-<li>
-<hr />
-<div className="timeline-middle">
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 20 20"
-		fill="currentColor"
-		className=" size-8"
-	>
-		<path
-			fillRule="evenodd"
-			d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-			clipRule="evenodd"
-		/>
-	</svg>
-</div>
-<div className="timeline-end timeline-box">Giới thiệu</div>
-<hr />
-</li>
-<li>
-<hr />
-<div className="timeline-start timeline-box">Quyền lợi</div>
-<div className="timeline-middle">
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 20 20"
-		fill="currentColor"
-		className=" size-8"
-	>
-		<path
-			fillRule="evenodd"
-			d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-			clipRule="evenodd"
-		/>
-	</svg>
-</div>
-<hr />
-</li>
-<li>
-<hr />
-
-<div className="timeline-middle">
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 20 20"
-		fill="currentColor"
-		className="size-8"
-	>
-		<path
-			fillRule="evenodd"
-			d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-			clipRule="evenodd"
-		/>
-	</svg>
-</div>
-<div className="timeline-end timeline-box">Thông tin cuộc thi</div>
-<hr />
-</li>
-<li>
-<hr />
-
-<div className="timeline-start timeline-box">Timeline</div>
-<div className="timeline-middle">
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 20 20"
-		fill="currentColor"
-		className="size-8"
-	>
-		<path
-			fillRule="evenodd"
-			d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-			clipRule="evenodd"
-		/>
-	</svg>
-</div>
-<hr />
-</li>
-<li>
-<hr />
-<div className="timeline-end timeline-box">FAQ</div>
-<div className="timeline-middle">
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 20 20"
-		fill="currentColor"
-		className="size-8"
-	>
-		<path
-			fillRule="evenodd"
-			d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-			clipRule="evenodd"
-		/>
-	</svg>
-</div>
-<hr />
-</li>
-<li className="animate-pulse">
-<hr />
-<div className="timeline-end timeline-box">Đăng ký</div>
-<div className="timeline-middle">
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 20 20"
-		fill="currentColor"
-		className="size-8"
-	>
-		<path
-			fillRule="evenodd"
-			d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-			clipRule="evenodd"
-		/>
-	</svg>
-</div>
-</li> */
-}

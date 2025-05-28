@@ -1,16 +1,40 @@
 import congden from "../../assets/images/cong_coden.webp";
+import cong from "../../assets/images/cong.webp";
 import cloud from "../../assets/images/cloud_light.png";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
+
+const congImgs = [cong, congden];
+const variants = {
+	hidden: { opacity: 0, scale: 0.8 },
+	animate: { opacity: 1, scale: 1 },
+	exit: { opacity: 0, scale: 0.8 },
+};
 const Loader = ({ progress }) => {
+	const [step, setStep] = useState(0);
+	useEffect(() => {
+		if (progress > 60) {
+			setStep(1);
+		}
+	}, [progress]);
 	return (
 		<div
 			id="loader"
 			className="flex flex-col items-center justify-center h-screen bg-gradient-to-b from-[#1D2C48] to-[#f9f9f9]"
 		>
-			<img
-				src={congden}
-				className="
+			<AnimatePresence mode="wait">
+				<motion.img
+					src={congImgs[step]}
+					variants={variants}
+					initial="hidden"
+					animate="animate"
+					exit="exit"
+					transition={{ duration: 0.8, type: "tween", ease: "easeInOut" }}
+					alt="Congden"
+					className="
              h-72 md:h-96 mb-4"
-			/>
+				/>
+			</AnimatePresence>
 			<img
 				src={cloud}
 				className="absolute top-0 left-0 w-full h-full object-cover animate-pulse"
