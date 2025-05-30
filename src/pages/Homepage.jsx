@@ -14,7 +14,6 @@ import tran from "../assets/images/anacon.png";
 import da from "../assets/images/da2_bg.webp";
 import light from "../assets/images/cloud_light.webp";
 import nut from "../assets/images/khung.png";
-// import { Link, useLocation } from "react-router";
 import React, { useState, useEffect } from "react";
 import CountdownTimer from "../components/countdown/CountdownTimer";
 import { useRef } from "react";
