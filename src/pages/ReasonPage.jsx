@@ -1,92 +1,167 @@
 // ReasonPage.jsx
-import bgImg from "../assets/images/reasons/dead forest.png";
-import player from "../assets/images/hero3.webp";
-import table from "../assets/images/bang3.webp";
+import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
+import bg from "../assets/images/reasons/bg/2.png";
+// import bg from "../assets/images/nencover_resize.png";
+import hero from "../assets/images/hero3.webp";
 
-import reason1 from "../assets/images/reasons/1.jpg";
-import reason2 from "../assets/images/reasons/2.jpg";
-import reason3 from "../assets/images/reasons/3.jpg";
-import reason4 from "../assets/images/reasons/4.jpg";
-import reason5 from "../assets/images/reasons/5.jpg";
+import {
+	AnimatedSpan,
+	Terminal,
+	TypingAnimation,
+} from "../components/ui/Terminal";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "motion/react";
+import { TypewriterEffect } from "../components/ui/TextGenerate";
+import TimelinePage from "./TimelinePage";
+import QuestionPage from "./QuestionPage";
+
+const words = [
+	{
+		text: "Vì",
+		className: "font-HP tracking-wider",
+	},
+	{
+		text: "sao",
+		className: "font-HP tracking-wider",
+	},
+	{
+		text: "bạn",
+		className: "font-HP tracking-wider",
+	},
+	{
+		text: "nên",
+		className: "font-HP tracking-wider",
+	},
+	{
+		text: "tham",
+		className: "font-HP tracking-wider",
+	},
+	{
+		text: "gia",
+		className: "font-HP tracking-wider",
+	},
+	{
+		text: "CodeFest?",
+		className: "text-primary font-HP",
+	},
+];
+
+const texts = [
+	"Cơ cấu giải thưởng Hấp Dẫn",
+
+	"Cơ hội học tập và rèn luyện",
+
+	"Nâng cao kiến thức và kĩ năng lập trình",
+
+	"Mở rộng mạng lưới kết nối",
+
+	"Phát triển các kỹ năng mềm",
+];
+
 const ReasonPage = () => {
-	const ref = useRef(null);
-	const tbRef = useRef(null);
-	const { scrollYProgress } = useScroll({
-		targert: ref,
-		offset: ["start start", "end start"],
+	const { scrollY } = useScroll({
+		target: "#reason",
 	});
-	const isVisible = useInView(tbRef);
-	const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+	const x = useTransform(scrollY, [0, 500, 1000], [-50, 200, -450]);
+	const y = useTransform(scrollY, [0, 500, 1000], [0, -100, -50]);
+	const scale = useTransform(scrollY, [0, 500, 1000], [1, 0.8, 1]);
 
 	return (
 		<>
-			<div
+			<motion.div
 				id="reason"
-				ref={ref}
-				className="w-full h-[100vh] relative grid place-content-center overflow-hidden"
+				className="relative flex flex-col items-center justify-center h-screen scroll-smooth overflow-hidden"
 			>
 				<motion.div
-					className="absolute inset-0 z-0"
+					// className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-cover bg-center"
+					className="min-h-screen w-full relative flex flex-col items-center justify-center"
 					style={{
-						backgroundImage: `url(${bgImg})`,
+						backgroundImage: `url(${bg})`,
 						backgroundSize: "cover",
-						backgroundPosition: "bottom",
-						y: bgY,
+						// backgroundPosition: "center",
+						backgroundRepeat: "no-repeat",
+						backgroundAttachment: "fixed",
+						// scale,
+						// y,
 					}}
-				/>
-				<motion.img
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ duration: 0.5 }}
-					src={player}
-					className="absolute top-1/2 left-1/2 -translate-x-1/2 w-64 z-50"
-					alt="Player"
-				/>
-				<motion.img
-					ref={tbRef}
-					initial={{ opacity: 0 }}
-					exit={{ opacity: 0 }}
-					whileInView={isVisible ? { opacity: 1 } : { opacity: 0 }}
-					transition={{ duration: 1, delay: 0.5 }}
-					src={table}
-					className="absolute top-1/2 left-1/2 -translate-x-1/2 w-64 z-50"
-					alt="Table"
-				/>
-			</div>
-			{/* <div className="w-full h-screen flex items-center justify-center flex-col">
-				<motion.div
-					className="hero"
-					initial={{
-						opacity: 0,
-						scale: 0.8,
-					}}
-					whileInView={{
-						opacity: 1,
-						scale: 1,
-					}}
-					transition={{ duration: 1, type: "spring" }}
 				>
-					<div className="hero-content flex-col lg:flex-row-reverse">
-						<img
-							src={reason1}
-							className="max-w-sm rounded-lg shadow-2xl"
-							alt="Reason 1"
-						/>
-						<div>
-							<h1 className="text-5xl font-bold">Reason 1</h1>
-							<p className="py-6">
-								Provident cupiditate voluptatem et in. Quaerat fugiat ut
-								assumenda excepturi exercitationem quasi. In deleniti eaque aut
-								repudiandae et a id nisi.
-							</p>
-							<button className="btn btn-primary">Get Started</button>
-						</div>
-					</div>
+					{/* <motion.div
+						initial={{ opacity: 0 }}
+						whileInView={{ opacity: 1 }}
+						transition={{ duration: 0.5 }}
+						className="fixed left-1/2 transform translate-x-1/2 bottom-0 size-64 object-cover z-10"
+						style={{
+							backgroundImage: `url(${hero})`,
+							backgroundSize: "cover",
+							backgroundPosition: "center",
+							x,
+							y,
+							scale,
+						}}
+					/> */}
+					<motion.div
+						initial={{ opacity: 0, scale: 0.8 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.5 }}
+						className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]"
+					>
+						<Terminal>
+							<TypingAnimation>&gt; npx join-codefest@2025</TypingAnimation>
+
+							<AnimatedSpan delay={1500} className="text-green-500">
+								<span>✔ Cơ cấu giải thưởng HẤP DẪN</span>
+							</AnimatedSpan>
+
+							<AnimatedSpan delay={2000} className="text-green-500">
+								<span>✔ Cơ hội HỌC TẬP và RÈN LUYỆN</span>
+							</AnimatedSpan>
+
+							<AnimatedSpan delay={2500} className="text-green-500">
+								<span>✔ Nâng cao KIẾN THỨC và KĨ NĂNG lập trình"</span>
+							</AnimatedSpan>
+
+							<AnimatedSpan delay={3000} className="text-green-500">
+								<span>✔ Mở rộng mạng lưới KẾT NỐI</span>
+							</AnimatedSpan>
+
+							<AnimatedSpan delay={3500} className="text-green-500">
+								<span>✔ Phát triển các KỸ NĂNG MỀM</span>
+							</AnimatedSpan>
+
+							<AnimatedSpan delay={4000} className="text-green-500">
+								<span>✔ Installing dependencies.</span>
+							</AnimatedSpan>
+
+							<AnimatedSpan delay={4500} className="text-blue-500">
+								<span>ℹ Installed:</span>
+								<span className="pl-2">- app/codefest.ts</span>
+							</AnimatedSpan>
+
+							<TypingAnimation delay={5000} className="text-base-content">
+								Success! 😎.
+							</TypingAnimation>
+
+							<TypingAnimation delay={5500} className="text-base-content">
+								Chúc bạn thi đấu thành công!
+							</TypingAnimation>
+						</Terminal>
+					</motion.div>
+
+					<motion.div
+						animate={{ y: ["0%", "20%", "0%"] }}
+						layout
+						transition={{
+							duration: 2,
+							repeat: Infinity,
+							repeatType: "reverse",
+							// type: "spring",
+						}}
+						className="z-[3] absolute top-[20%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl md:text-4xl lg:text-6xl font-bold"
+					>
+						<TypewriterEffect words={words} />
+					</motion.div>
 				</motion.div>
-			</div> */}
+			</motion.div>
 		</>
 	);
 };
