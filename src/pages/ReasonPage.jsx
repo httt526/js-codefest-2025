@@ -45,7 +45,7 @@ const words = [
 		className: "font-HP tracking-wider",
 	},
 	{
-		text: "CodeFest?",
+		text: "CODEFEST?",
 		className: "text-primary font-HP",
 	},
 ];
@@ -73,17 +73,15 @@ const ReasonPage = () => {
 				ref={ref}
 				id="reason"
 				className="relative flex flex-col items-center justify-center min-h-screen scroll-smooth overflow-hidden bg-base-200"
-				style={
-					{
-						// backgroundImage: `url(${bg})`,
-						// backgroundSize: "cover",
-						// backgroundPosition: "center",
-						// backgroundRepeat: "no-repeat",
-						// backgroundAttachment: "fixed",
-						// scale,
-						// y,
-					}
-				}
+				style={{
+					backgroundImage: `url(${bg})`,
+					backgroundSize: "cover",
+					backgroundPosition: "center",
+					backgroundRepeat: "no-repeat",
+					backgroundAttachment: "fixed",
+					// scale,
+					// y,
+				}}
 			>
 				<motion.div
 					// className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-cover bg-center"

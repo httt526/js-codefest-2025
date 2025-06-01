@@ -4,7 +4,7 @@ const InfoCard = ({ image, title, direction, children, imgClass }) => {
 	return (
 		<section
 			className={cn(
-				"relative border-4 min-w-[300px] min-h-[400px] border-[#92ACFA] bg-[#2F4F7D]/40 rounded-4xl flex flex-col justify-center items-center",
+				"relative border-4 min-w-[300px] min-h-[360px] border-[#92ACFA] bg-[#2F4F7D]/40 rounded-4xl flex flex-col justify-center items-center",
 				direction === "bottom" && "-translate-y-[25%]"
 			)}
 		>

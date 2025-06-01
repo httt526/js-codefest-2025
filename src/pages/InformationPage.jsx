@@ -41,13 +41,13 @@ const InformationPage = () => {
 		<div
 			id="information"
 			ref={ref}
-			// style={{
-			// 	backgroundImage: `url(${bg})`,
-			// 	backgroundSize: "cover",
-			// 	backgroundPosition: "center",
-			// 	backgroundRepeat: "no-repeat",
-			// 	backgroundAttachment: "fixed",
-			// }}
+			style={{
+				backgroundImage: `url(${bg})`,
+				backgroundSize: "cover",
+				backgroundPosition: "center",
+				backgroundRepeat: "no-repeat",
+				backgroundAttachment: "fixed",
+			}}
 			className="w-full min-h-screen relative flex flex-col items-center justify-center overflow-hidden bg-base-200"
 		>
 			<AnimatePresence mode="wait">

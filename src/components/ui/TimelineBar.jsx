@@ -113,7 +113,7 @@ export default function TimelineBar() {
 						style={{ lineHeight: 2 }}
 					>
 						<time className="font-HP text-secondary md:text-2xl mb-2">
-							15/09/2024
+							15/09/2025
 						</time>
 						<div
 							className="text-4xl font-black text-primary font-Treacherous mb-6"

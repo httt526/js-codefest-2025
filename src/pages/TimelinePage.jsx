@@ -36,19 +36,19 @@ const TimelinePage = () => {
 		<motion.div
 			id="timeline"
 			ref={ref}
-			// style={{
-			// 	backgroundImage: `url(${bg})`,
-			// 	backgroundSize: "cover",
-			// 	backgroundPosition: "center",
-			// 	backgroundRepeat: "no-repeat",
-			// 	backgroundAttachment: "fixed",
-			// }}
+			style={{
+				backgroundImage: `url(${bg})`,
+				backgroundSize: "cover",
+				backgroundPosition: "center",
+				backgroundRepeat: "no-repeat",
+				backgroundAttachment: "fixed",
+			}}
 			className="w-full bg-base-200 relative flex flex-col items-center justify-center min-h-screen py-18"
 		>
 			<MouseParallaxContainer
 				globalFactorX={0.1}
 				globalFactorY={0.1}
-				className="w-full relative flex flex-col items-center justify-center min-h-screen"
+				className="w-full relative flex flex-col items-center justify-center"
 				style={{ width: "100%", height: "100%", overflow: "auto" }}
 			>
 				<AnimatePresence mode="wait">
