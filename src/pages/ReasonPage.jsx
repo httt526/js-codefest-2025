@@ -1,5 +1,11 @@
 // ReasonPage.jsx
-import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
+import {
+	AnimatePresence,
+	motion,
+	useScroll,
+	useTransform,
+	useInView,
+} from "motion/react";
 import bg from "../assets/images/reasons/bg/2.png";
 // import bg from "../assets/images/nencover_resize.png";
 import hero from "../assets/images/hero3.webp";
@@ -13,6 +19,7 @@ import {
 import { TypewriterEffect } from "../components/ui/TextGenerate";
 import TimelinePage from "./TimelinePage";
 import QuestionPage from "./QuestionPage";
+import { useEffect, useRef } from "react";
 
 const words = [
 	{
@@ -62,13 +69,18 @@ const ReasonPage = () => {
 		target: "#reason",
 	});
 
+	const ref = useRef(null);
+
 	const x = useTransform(scrollY, [0, 500, 1000], [-50, 200, -450]);
 	const y = useTransform(scrollY, [0, 500, 1000], [0, -100, -50]);
 	const scale = useTransform(scrollY, [0, 500, 1000], [1, 0.8, 1]);
 
+	const isViewed = useInView(ref);
+
 	return (
 		<>
 			<motion.div
+				ref={ref}
 				id="reason"
 				className="relative flex flex-col items-center justify-center h-screen scroll-smooth overflow-hidden"
 			>
@@ -99,53 +111,57 @@ const ReasonPage = () => {
 							scale,
 						}}
 					/> */}
-					<motion.div
-						initial={{ opacity: 0, scale: 0.8 }}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{ duration: 0.5 }}
-						className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]"
-					>
-						<Terminal>
-							<TypingAnimation>&gt; npx join-codefest@2025</TypingAnimation>
+					<AnimatePresence mode="wait">
+						{isViewed && (
+							<motion.div
+								initial={{ opacity: 0, scale: 0.8 }}
+								animate={{ opacity: 1, scale: 1 }}
+								transition={{ duration: 0.5 }}
+								className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]"
+							>
+								<Terminal>
+									<TypingAnimation>&gt; npx join-codefest@2025</TypingAnimation>
 
-							<AnimatedSpan delay={1500} className="text-green-500">
-								<span>✔ Cơ cấu giải thưởng HẤP DẪN</span>
-							</AnimatedSpan>
+									<AnimatedSpan delay={1500} className="text-green-500">
+										<span>✔ Cơ cấu giải thưởng HẤP DẪN</span>
+									</AnimatedSpan>
 
-							<AnimatedSpan delay={2000} className="text-green-500">
-								<span>✔ Cơ hội HỌC TẬP và RÈN LUYỆN</span>
-							</AnimatedSpan>
+									<AnimatedSpan delay={2000} className="text-green-500">
+										<span>✔ Cơ hội HỌC TẬP và RÈN LUYỆN</span>
+									</AnimatedSpan>
 
-							<AnimatedSpan delay={2500} className="text-green-500">
-								<span>✔ Nâng cao KIẾN THỨC và KĨ NĂNG lập trình"</span>
-							</AnimatedSpan>
+									<AnimatedSpan delay={2500} className="text-green-500">
+										<span>✔ Nâng cao KIẾN THỨC và KĨ NĂNG lập trình"</span>
+									</AnimatedSpan>
 
-							<AnimatedSpan delay={3000} className="text-green-500">
-								<span>✔ Mở rộng mạng lưới KẾT NỐI</span>
-							</AnimatedSpan>
+									<AnimatedSpan delay={3000} className="text-green-500">
+										<span>✔ Mở rộng mạng lưới KẾT NỐI</span>
+									</AnimatedSpan>
 
-							<AnimatedSpan delay={3500} className="text-green-500">
-								<span>✔ Phát triển các KỸ NĂNG MỀM</span>
-							</AnimatedSpan>
+									<AnimatedSpan delay={3500} className="text-green-500">
+										<span>✔ Phát triển các KỸ NĂNG MỀM</span>
+									</AnimatedSpan>
 
-							<AnimatedSpan delay={4000} className="text-green-500">
-								<span>✔ Installing dependencies.</span>
-							</AnimatedSpan>
+									<AnimatedSpan delay={4000} className="text-green-500">
+										<span>✔ Installing dependencies.</span>
+									</AnimatedSpan>
 
-							<AnimatedSpan delay={4500} className="text-blue-500">
-								<span>ℹ Installed:</span>
-								<span className="pl-2">- app/codefest.ts</span>
-							</AnimatedSpan>
+									<AnimatedSpan delay={4500} className="text-blue-500">
+										<span>ℹ Installed:</span>
+										<span className="pl-2">- app/codefest.ts</span>
+									</AnimatedSpan>
 
-							<TypingAnimation delay={5000} className="text-base-content">
-								Success! 😎.
-							</TypingAnimation>
+									<TypingAnimation delay={5000} className="text-base-content">
+										Success! 😎.
+									</TypingAnimation>
 
-							<TypingAnimation delay={5500} className="text-base-content">
-								Chúc bạn thi đấu thành công!
-							</TypingAnimation>
-						</Terminal>
-					</motion.div>
+									<TypingAnimation delay={5500} className="text-base-content">
+										Chúc bạn thi đấu thành công!
+									</TypingAnimation>
+								</Terminal>
+							</motion.div>
+						)}
+					</AnimatePresence>
 
 					<motion.div
 						animate={{ y: ["0%", "20%", "0%"] }}
