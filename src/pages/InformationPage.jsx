@@ -11,8 +11,7 @@ const InformationPage = () => {
 				backgroundAttachment: "fixed",
 			}}
 			className="w-full relative flex flex-col items-center justify-center overflow-hidden "
-		>
-		</div>
+		></div>
 	);
 };
 

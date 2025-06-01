@@ -1,4 +1,4 @@
- export default function TimelineBar() {
+export default function TimelineBar() {
 	return (
 		<div style={{ paddingLeft: 240, paddingRight: 240 }}>
 			<ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical z-[2]">
@@ -17,23 +17,31 @@
 							/>
 						</svg>
 					</div>
-					
-					<div className="timeline-start mb-14 md:text-end text-xl" style={{ lineHeight: 2 }}>
-						<time className="font-HP italic text-secondary">13/08 - 31/08</time>
-						<div className="text-md md:text-4xl font-black text-primary font-Treacherous" style={{ lineHeight: 1.5 }}>
+
+					<div
+						className="timeline-start mb-14 md:text-end text-xl"
+						style={{ lineHeight: 2 }}
+					>
+						<time className="font-HP italic text-secondary text-2xl btn btn-outline mb-2">
+							13/08 - 31/08
+						</time>
+						<div
+							className="text-md md:text-4xl font-black text-primary font-Treacherous mb-6"
+							style={{ lineHeight: 1.5 }}
+						>
 							Mở đơn đăng ký
 						</div>
 						<p className="hidden md:block text-2sm md:text-l leading-[2rem] font-sans">
 							Các thí sinh đăng ký cá nhân hoặc theo đội (3 - 4 thành viên/đội).{" "}
-							
 							Đối với các thí sinh đăng ký tự do, BTC sẽ hỗ trợ ghép đội cho phù
 							hợp.
 						</p>
 					</div>
-					<hr style={{ borderColor: "#92ACFA" }} />
+					<hr className="bg-primary" />
 				</li>
 				<li>
-					<hr style={{ borderColor: "#92ACFA" }}/>
+					<hr className="bg-primary" />
+
 					<div className="timeline-middle btn btn-circle">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -48,24 +56,32 @@
 							/>
 						</svg>
 					</div>
-					<div className="timeline-end md:mb-10 text-xl" style={{ lineHeight: 2 }}>
-						<time className="font-HP italic text-secondary">01/09 - 14/09</time>
-						<div className="text-4xl font-black text-primary font-Treacherous" style={{ lineHeight: 1.5 }}>
+					<div
+						className="timeline-end md:mb-10 text-xl"
+						style={{ lineHeight: 2 }}
+					>
+						<time className="font-HP italic text-secondary text-2xl btn btn-outline mb-2">
+							01/09 - 14/09
+						</time>
+						<div
+							className="text-4xl font-black text-primary font-Treacherous mb-6"
+							style={{ lineHeight: 1.5 }}
+						>
 							Giai đoạn Training
 						</div>
 						<p className="hidden md:block text-l text-2sm leading-[1.75rem] font-sans">
 							Sau khi kết thúc vòng đăng ký, các đội thi bước vào vòng training
-							với sự hướng dẫn của những mentor dày dặn kinh nghiệm, được cung cấp
-							hướng dẫn chi tiết về cách thức lập trình và tối ưu hóa con bot,
-							cũng như chiến lược thu thập vật phẩm, và chiến đấu trên các bản đồ.
-							 Đồng thời các đội thi sẽ phát triển và tối ưu con bot  của
+							với sự hướng dẫn của những mentor dày dặn kinh nghiệm, được cung
+							cấp hướng dẫn chi tiết về cách thức lập trình và tối ưu hóa con
+							bot, cũng như chiến lược thu thập vật phẩm, và chiến đấu trên các
+							bản đồ. Đồng thời các đội thi sẽ phát triển và tối ưu con bot của
 							riêng mình.
 						</p>
 					</div>
-					<hr />
+					<hr className="bg-primary" />
 				</li>
 				<li>
-					<hr />
+					<hr className="bg-primary" />
 					<div className="timeline-middle btn btn-circle">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -80,17 +96,26 @@
 							/>
 						</svg>
 					</div>
-					<div className="timeline-start mb-10 md:text-end text-xl" style={{ lineHeight: 2 }}>
-						<time className="font-HP italic text-secondary">15/09/2024</time>
-						<div className="text-4xl font-black text-primary font-Treacherous" style={{ lineHeight: 1.5 }}>Vòng Chung kết</div>
+					<div
+						className="timeline-start mb-10 md:text-end text-xl"
+						style={{ lineHeight: 2 }}
+					>
+						<time className="font-HP italic text-secondary text-2xl btn btn-outline mb-2">
+							15/09/2024
+						</time>
+						<div
+							className="text-4xl font-black text-primary font-Treacherous mb-6"
+							style={{ lineHeight: 1.5 }}
+						>
+							Vòng Chung kết
+						</div>
 						<p className="font-sans hidden md:block text-2sm leading-[1.75rem]">
-							Các đội chơi tham gia thi đấu chính thức tại trường Đại học FPT Hà Nội.
-							
-							Đây là lúc các đội đem những con bot mình đã chuẩn bị để tranh tài
-							cùng nhau trên chiến trường khốc liệt.
+							Các đội chơi tham gia thi đấu chính thức tại trường Đại học FPT Hà
+							Nội. Đây là lúc các đội đem những con bot mình đã chuẩn bị để
+							tranh tài cùng nhau trên chiến trường khốc liệt.
 						</p>
 					</div>
-					<hr />
+					<hr className="bg-primary" />
 				</li>
 			</ul>
 		</div>

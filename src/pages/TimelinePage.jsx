@@ -1,7 +1,7 @@
 // TimelinePage.jsx
-import { motion } from "motion/react";
+import { motion, useInView, AnimatePresence } from "motion/react";
 //import bg from "../assets/images/reasons/bg/2.png";
- import bg from "../assets/images/nencover_resize.png";
+import bg from "../assets/images/nencover_resize.png";
 import { TypewriterEffect } from "../components/ui/TextGenerate";
 import { useRef } from "react";
 import TimelineBar from "../components/ui/TimelineBar";
@@ -26,6 +26,7 @@ const words = [
 ];
 const TimelinePage = () => {
 	const ref = useRef(null);
+	const isViewed = useInView(ref);
 	return (
 		<motion.div
 			id="timeline"
@@ -36,20 +37,26 @@ const TimelinePage = () => {
 				// backgroundPosition: "center",
 				backgroundRepeat: "no-repeat",
 				backgroundAttachment: "fixed",
-				minHeight: 'calc(100% + 300px)', // Add 90px on each side
+				minHeight: "calc(100% + 300px)", // Add 90px on each side
 			}}
 			className="w-full relative flex flex-col items-center justify-center overflow-hidden "
 		>
-			<motion.div
-				intial={{ opacity: 0 }}
-				whileInView={{ opacity: 1, y: -100 }}
-				transition={{ duration: 0.5 }}
-				viewport={{ root: ref }}
-				className="absolute top-[15%] -right-[-14%] transform -translate-x-1/2 -translate-y-1/2 text-4xl md:text-6xl lg:text-8xl font-bold z-10"
-			>
-				<TypewriterEffect words={words} />
-			</motion.div>
-			<TimelineBar />
+			<AnimatePresence mode="wait">
+				{isViewed && (
+					<>
+						<motion.div
+							intial={{ opacity: 0, x: -100 }}
+							whileInView={{ opacity: 1, x: 0 }}
+							transition={{ duration: 1 }}
+							viewport={{ root: ref }}
+							className="text-4xl md:text-6xl lg:text-8xl font-bold z-10 m-8"
+						>
+							<TypewriterEffect words={words} />
+						</motion.div>
+						<TimelineBar />
+					</>
+				)}
+			</AnimatePresence>
 		</motion.div>
 	);
 };
