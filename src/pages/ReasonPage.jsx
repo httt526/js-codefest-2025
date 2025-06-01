@@ -6,8 +6,8 @@ import {
 	useTransform,
 	useInView,
 } from "motion/react";
-import bg from "../assets/images/reasons/bg/2.png";
-// import bg from "../assets/images/nencover_resize.png";
+//import bg from "../assets/images/reasons/bg/2.png";
+import bg from "../assets/images/nencover_resize.png";
 import hero from "../assets/images/hero3.webp";
 
 import {
@@ -17,33 +17,31 @@ import {
 } from "../components/ui/Terminal";
 
 import { TypewriterEffect } from "../components/ui/TextGenerate";
-import TimelinePage from "./TimelinePage";
-import QuestionPage from "./QuestionPage";
 import { useEffect, useRef } from "react";
 
 const words = [
 	{
-		text: "Vì",
+		text: "VÌ",
 		className: "font-HP tracking-wider",
 	},
 	{
-		text: "sao",
+		text: "SAO",
 		className: "font-HP tracking-wider",
 	},
 	{
-		text: "bạn",
+		text: "BẠN",
 		className: "font-HP tracking-wider",
 	},
 	{
-		text: "nên",
+		text: "NÊN",
 		className: "font-HP tracking-wider",
 	},
 	{
-		text: "tham",
+		text: "THAM",
 		className: "font-HP tracking-wider",
 	},
 	{
-		text: "gia",
+		text: "GIA",
 		className: "font-HP tracking-wider",
 	},
 	{
@@ -113,11 +111,26 @@ const ReasonPage = () => {
 					/> */}
 					<AnimatePresence mode="wait">
 						{isViewed && (
+							<>
+								<motion.div
+									intial={{ opacity: 0, x: -100 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									transition={{ duration: 1 }}
+									viewport={{ root: ref }}
+									className="text-4xl md:text-6xl lg:text-8xl font-bold z-10 m-8"
+								>
+									<TypewriterEffect words={words} />
+								</motion.div>
+							</>
+						)}
+					</AnimatePresence>
+					<AnimatePresence mode="wait">
+						{isViewed && (
 							<motion.div
 								initial={{ opacity: 0, scale: 0.8 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ duration: 0.5 }}
-								className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]"
+								// className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]"
 							>
 								<Terminal>
 									<TypingAnimation>&gt; npx join-codefest@2025</TypingAnimation>
@@ -162,20 +175,6 @@ const ReasonPage = () => {
 							</motion.div>
 						)}
 					</AnimatePresence>
-
-					<motion.div
-						animate={{ y: ["0%", "20%", "0%"] }}
-						layout
-						transition={{
-							duration: 2,
-							repeat: Infinity,
-							repeatType: "reverse",
-							// type: "spring",
-						}}
-						className="z-[3] absolute top-[20%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl md:text-4xl lg:text-6xl font-bold"
-					>
-						<TypewriterEffect words={words} />
-					</motion.div>
 				</motion.div>
 			</motion.div>
 		</>
