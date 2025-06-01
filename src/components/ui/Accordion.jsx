@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "../../lib/utils";
-
 const ChevronDown = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +141,7 @@ function FAQItem({ item, isOpen, onToggle }) {
 				whileHover={{ backgroundColor: "var(--color-base-200)" }}
 				whileTap={{ scale: 0.995 }}
 			>
-				<h3 className="text-lg font-semibold text-primary pr-4 uppercase">
+				<h3 className="text-md md:text-lg font-semibold font-HP tracking-wider text-secondary pr-4 uppercase">
 					{item.question}
 				</h3>
 				<motion.div
@@ -172,7 +171,7 @@ function FAQItem({ item, isOpen, onToggle }) {
 								animate={{ y: 0 }}
 								exit={{ y: -10 }}
 								transition={{ duration: 0.2 }}
-								className="text-base-content text-lg leading-relaxed"
+								className="text-base-content text-sm md:text-lg leading-relaxed"
 								dangerouslySetInnerHTML={{ __html: item.answer }}
 							></motion.p>
 						</div>
@@ -199,7 +198,7 @@ export default function FAQ() {
 	};
 
 	return (
-		<div className="min-w-md max-w-md md:min-w-2xl md:max-w-2xl lg:min-w-4xl lg:max-w-4xl mx-auto p-6 z-50">
+		<div className="min-w-md max-w-md md:min-w-2xl md:max-w-2xl lg:min-w-4xl lg:max-w-4xl mx-auto z-[1000]">
 			<motion.div
 				className="space-y-4"
 				initial={{ opacity: 0 }}

@@ -1,4 +1,5 @@
-import bg from "../assets/images/nencover_resize.png";
+import bg from "../assets/images/reasons/bg/3.png";
+// import bg from "../assets/images/nencover_resize.png";
 import map from "../assets/images/map16_9.png";
 // import ParallaxSection from "../components/ParallaxSection";
 import React, { useState, useEffect } from "react";
@@ -24,9 +25,9 @@ const IntroPage = () => {
 			// whileInView={{ opacity: isViewed ? 1 : 0 }}
 			transition={{ duration: 1, ease: "easeInOut" }}
 			ref={ref}
-			className="relative grid place-content-center w-full h-screen scroll-smooth"
+			className="relative grid place-content-center w-full h-screen scroll-smooth bg-base-200"
 			style={{
-				backgroundImage: `url(${bg})`,
+				// backgroundImage: `url(${bg})`,
 				backgroundSize: "cover",
 				// backgroundPosition: "center",
 				backgroundRepeat: "no-repeat",
