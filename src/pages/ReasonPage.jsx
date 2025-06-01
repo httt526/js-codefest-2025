@@ -1,7 +1,7 @@
 // ReasonPage.jsx
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
-import bg from "../assets/images/reasons/bg/2.png";
-// import bg from "../assets/images/nencover_resize.png";
+//import bg from "../assets/images/reasons/bg/2.png";
+import bg from "../assets/images/nencover_resize.png";
 import hero from "../assets/images/hero3.webp";
 
 import {

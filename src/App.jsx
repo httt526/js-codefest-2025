@@ -1,8 +1,10 @@
 import Header from "./components/Header";
 import Loader from "./components/ui/Loader";
-import { useScroll, useTransform, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { ReactLenis } from "lenis/dist/lenis-react";
+import { motion, useMotionTemplate, useScroll, useTransform } from "framer-motion";
 
+import ParallaxSection from "./components/ParallaxSection";
 import Homepage from "./pages/Homepage";
 import IntroPage from "./pages/IntroPage";
 import ReasonPage from "./pages/ReasonPage";
@@ -67,6 +69,7 @@ const App = () => {
 					>
 						<div className="fixed inset-0 bg-black opacity-50 z-1"></div>
 						<Homepage />
+						{/*<ParallaxSection start={1000} end={3000}><IntroPage /></ParallaxSection>*/}
 						<IntroPage />
 						<InformationPage />
 						<ReasonPage />

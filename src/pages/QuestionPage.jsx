@@ -1,7 +1,7 @@
 // QuestionPage.jsx
 import { motion } from "motion/react";
-import bg from "../assets/images/reasons/bg/2.png";
-// import bg from "../assets/images/nencover_resize.png";
+//import bg from "../assets/images/reasons/bg/2.png";
+import bg from "../assets/images/nencover_resize.png";
 import { TypewriterEffect } from "../components/ui/TextGenerate";
 import { useRef } from "react";
 import FAQ from "../components/ui/Accordion";
