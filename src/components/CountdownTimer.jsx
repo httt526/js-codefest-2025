@@ -2,13 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import khung from "../../assets/images/square.webp";
 
 const TimeBlock = ({ children, label }) => (
-  <div className="col-span-1 size-30 lg:size-38 flex flex-col items-center justify-center "
+  <div className="col-span-1 size-36 lg:size-44 flex flex-col items-center justify-center "
         style={{ backgroundImage: `url(${khung})`, backgroundSize: "cover" }}
   >
     <p className="text-white text-stroke font-HP font-extrabold text-4xl lg:text-5xl drop-shadow-[4px_4px_#1D2C48]">
       {children}
     </p>
-    <p className="text-[#92ACFA] text-stroke font-Treas text-md lg:text-l uppercase">
+    <p className="text-[#92ACFA] text-stroke font-Treacherous text-md lg:text-l uppercase">
       {label}
     </p>
   </div>
