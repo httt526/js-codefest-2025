@@ -1,5 +1,6 @@
 // Đây chính là Hero section
 import bgImg from "../assets/images/nencover_resize.png";
+import bgImg2 from "../assets/images/poster.webp";
 import hero from "../assets/images/hero_back.webp";
 import hrShadow from "../assets/images/hero_shadow.webp";
 import sqr from "../assets/images/square.webp";
@@ -32,7 +33,9 @@ const Homepage = () => {
 		target: ref,
 		offset: ["start end", "end start"],
 	});
-	const scale = useTransform(scrollY, [0, 500, 100], [1, 0.8, 0.5]);
+	const scale = useTransform(scrollY, [0, 500, 1000], [1, 0.8, 0.5]);
+	const scaleFont = useTransform(scrollY, [0, 500, 1000], [1, 1.2, 1.6]);
+	const scaleCong = useTransform(scrollY, [0, 500, 1000], [1, 2, 2.5]);
 	const turnL = useTransform(scrollY, [0, 500], [0, -5000]);
 	const turnR = useTransform(scrollY, [0, 500], [0, 5000]);
 	const y = useTransform(scrollY, [0, 500, 1000], [0, -100, -50]);
@@ -41,23 +44,31 @@ const Homepage = () => {
 	const onTop = useTransform(scrollY, [0, 500], [0, -1000]);
 	const onBottom = useTransform(scrollY, [0, 500], [0, 1000]);
 	return (
-		<>
-			<MouseParallaxContainer
-				globalFactorX={0.1}
-				globalFactorY={0.1}
-				id="home"
-				ref={ref}
-				className="w-full h-screen relative overflow-hidden"
-			>
+		<div
+			id="homepage"
+			ref={ref}
+			className="w-full h-screen relative overflow-hidden"
+		>
+			<MouseParallaxContainer globalFactorX={0.1} globalFactorY={0.1}>
 				<motion.div
 					style={{ opacity }}
 					transition={{ duration: 1, ease: "easeInOut" }}
 					className="w-full h-screen"
 				>
 					<div
-						className="bg inset-0 w-full h-full z-0 absolute"
+						className="inset-0 w-full h-full z-0 absolute hidden lg:block"
 						style={{
 							backgroundImage: `url(${bgImg})`,
+							backgroundSize: "cover",
+							backgroundPosition: "center",
+							backgroundRepeat: "no-repeat",
+							backgroundAttachment: "fixed",
+						}}
+					></div>
+					<div
+						className="inset-0 w-full h-full z-0 absolute block lg:hidden opacity-30"
+						style={{
+							backgroundImage: `url(${bgImg2})`,
 							backgroundSize: "cover",
 							backgroundRepeat: "no-repeat",
 							backgroundAttachment: "fixed",
@@ -65,7 +76,7 @@ const Homepage = () => {
 					></div>
 
 					<motion.img
-						className="absolute bottom-[-4%] left-[0%] w-600 h-200 z-10"
+						className="absolute bottom-[-4%] w-600 h-200 z-10 hidden md:block "
 						style={{
 							backgroundImage: `url(${light})`,
 							backgroundSize: "contain",
@@ -80,7 +91,7 @@ const Homepage = () => {
 					<MouseParallaxChild
 						factorX={0.5}
 						factorY={0.3}
-						className="absolute top-[-15%] left-[-16%] w-180 h-200 z-10"
+						className="absolute top-[-15%] left-[-15%] w-180 h-200 z-10 hidden md:block"
 					>
 						<motion.img src={tree2} alt="tree" style={{ x: turnR }} />
 					</MouseParallaxChild>
@@ -88,7 +99,7 @@ const Homepage = () => {
 					<MouseParallaxChild
 						factorX={0.2}
 						factorY={0.4}
-						className="absolute top-[10%] left-[5%] w-160 h-180 z-10"
+						className="absolute top-[10%] left-[-5%] md:left-[5%] w-160 h-180 z-10 hidden md:block "
 					>
 						<motion.img
 							src={drG}
@@ -100,7 +111,7 @@ const Homepage = () => {
 					<MouseParallaxChild
 						factorX={0.2}
 						factorY={0.4}
-						className="absolute right-[15%] w-xl h-xl z-10"
+						className="absolute right-0 lg:right-[15%] w-xl h-xl z-10 hidden md:block "
 					>
 						<motion.img
 							src={tran}
@@ -113,7 +124,7 @@ const Homepage = () => {
 					<MouseParallaxChild
 						factorX={0.1}
 						factorY={0.3}
-						className="absolute top-[28%] right-[2%] w-180 h-200 z-10"
+						className="absolute top-[28%] right-[2%] w-180 h-200 z-10 hidden md:block "
 						// style={{
 						// 	backgroundImage: `url(${da})`,
 						// 	backgroundRepeat: "no-repeat",
@@ -128,7 +139,7 @@ const Homepage = () => {
 					<MouseParallaxChild
 						factorX={0.5}
 						factorY={0.3}
-						className="absolute top-[0%] right-[-20%] w-180 h-200 z-10"
+						className="absolute top-[0%] right-[-20%] w-180 h-200 z-10 hidden md:block "
 					>
 						<motion.img src={tree1} alt="tree" style={{ x: turnL }} />
 					</MouseParallaxChild>
@@ -136,7 +147,7 @@ const Homepage = () => {
 					<MouseParallaxChild
 						factorX={0.1}
 						factorY={0.3}
-						className="absolute w-420 bottom-[-44%] right-[-8%] h-180 z-10"
+						className="absolute w-420 bottom-[-44%] right-[-8%] h-180 z-10 hidden md:block "
 					>
 						<motion.img
 							src={stone}
@@ -151,7 +162,7 @@ const Homepage = () => {
 					<MouseParallaxChild
 						factorX={0.1}
 						factorY={0.3}
-						className="absolute bottom-[0%] z-10"
+						className="absolute left-0 right-0 bottom-0 z-10 hidden md:block "
 					>
 						{/* <div
 							className="absolute w-300 bottom-[0%] left-[10.3%] h-90 z-10"
@@ -166,69 +177,33 @@ const Homepage = () => {
 						<motion.img src={land} alt="land" style={{ translateX: turnL }} />
 
 						<a href="/intro">
-							<motion.div
-								className="absolute w-68 top-[0%] left-[39.4%] h-72 z-10 cursor-pointer"
+							<motion.img
+								className="absolute w-68 left-1/2 translate-x-[-50%] md:bottom-[50%] h-72 z-10 cursor-pointer"
+								src={cong}
 								style={{
-									backgroundImage: `url(${cong})`,
-									backgroundSize: "contain",
-									backgroundPosition: "center",
-									backgroundRepeat: "no-repeat",
-									// y: onTop,
+									scale: scaleCong,
+									// y: onBottom,
 								}}
-							></motion.div>
+								transition={{ duration: 0.5, ease: "easeInOut" }}
+							/>
 						</a>
+						<motion.img
+							style={{ y, opacity: khoiOpacity }}
+							src={hrShadow}
+							alt="hrShadow"
+							className="absolute w-24 left-1/2 translate-x-[-50%] md:bottom-[25%] z-10"
+						/>
+
+						<motion.img
+							style={{ y, opacity: khoiOpacity }}
+							src={hero}
+							alt="hero"
+							className="absolute w-24 left-1/2 translate-x-[-50%] md:bottom-[40%] z-10"
+						/>
 					</MouseParallaxChild>
 
-					{/* <div
-						className="fixed w-420 bottom-[-30%] left-[-6%] h-500 z-10"
-						style={{
-							backgroundImage: `url(${khoi})`,
-							backgroundSize: "contain",
-							backgroundPosition: "center",
-							backgroundRepeat: "no-repeat",
-						}}
-					></div> */}
-
 					<motion.div
-						className="absolute w-80 bottom-[10.4%] left-[37.8%] h-28 z-10"
-						style={{
-							backgroundImage: `url(${hrShadow})`,
-							backgroundSize: "contain",
-							backgroundPosition: "center",
-							backgroundRepeat: "no-repeat",
-							opacity: khoiOpacity,
-						}}
-					></motion.div>
-
-					<motion.div
-						className="absolute w-100 bottom-[25%] left-[35.6%] h-20 z-10"
-						style={{
-							backgroundImage: `url(${hero})`,
-							backgroundSize: "contain",
-							backgroundPosition: "center",
-							backgroundRepeat: "no-repeat",
-							opacity: khoiOpacity,
-						}}
-					></motion.div>
-					{/*}
-				<div className="absolute bottom-[20%] left-[29.6%] h-30 z-10 flex gap-[0px]">
-  				{Array(4).fill(null).map((_, index) => (
-    				<div
-      					key={index}
-      					className="w-40" 
-      					style={{
-       						backgroundImage: `url(${sqr})`,
-        					backgroundSize: "contain",
-        					backgroundPosition: "center",
-        					backgroundRepeat: "no-repeat",
-      					}}
-    				/>
-  				))}
-				</div>
-
-*/}
-					<motion.div
-						className="absolute font-Treacherous text-xl bottom-[20%] left-[12%] h-30 z-10 flex gap-[0px]"
+						className="font-Treacherous text-xl fixed left-0 right-0 bottom-[20%] md:bottom-[15%] h-30 z-10 w-full md:flex md:justify-between"
 						style={{ scale, y }}
 					>
 						<CountdownTimer />
@@ -237,7 +212,8 @@ const Homepage = () => {
 					<a href="https://docs.google.com/document/u/0/">
 						<div>
 							<motion.div
-								className="absolute w-76 bottom-[6.6%] left-[38.5%] h-22 z-10"
+								// className="absolute w-76 bottom-[6.6%] left-[38.5%] flex justify-center items-center h-22 z-10"
+								className="absolute left-1/2 bottom-[60%] md:bottom-0 translate-x-[-50%] flex justify-center items-center w-76 h-22 z-10"
 								style={{
 									backgroundImage: `url(${nut})`,
 									backgroundSize: "contain",
@@ -246,30 +222,31 @@ const Homepage = () => {
 									scale,
 									y,
 								}}
-							></motion.div>
-
-							<motion.div
-								style={{ scale, y }}
-								className="absolute bottom-[10.6%] left-[43.2%] z-10 font-HP text-2xl text-[#ffffff] font-bold uppercase"
 							>
-								Thể lệ cuộc thi
+								<motion.p
+									style={{ scale }}
+									className="font-HP text-2xl text-[#ffffff] font-bold uppercase"
+								>
+									Thể lệ cuộc thi
+								</motion.p>
 							</motion.div>
 						</div>
 					</a>
 
 					<motion.div
-						className="absolute w-140 bottom-[26%] left-[29.6%] h-70 z-10"
+						// className="absolute md:w-140 left-1/2 bottom-1/2 md:bottom-[26%] md:left-[29.6%] h-70 z-10"
+						className="fixed top-[10%] right-0 bottom-0 left-0 w-full h-40 md:top-[30%] md:h-56 z-10"
 						style={{
 							backgroundImage: `url(${font})`,
 							backgroundSize: "contain",
 							backgroundPosition: "center",
 							backgroundRepeat: "no-repeat",
-							// y: onBottom,
+							scale: scaleFont,
 						}}
 					></motion.div>
 				</motion.div>
 			</MouseParallaxContainer>
-		</>
+		</div>
 	);
 };
 

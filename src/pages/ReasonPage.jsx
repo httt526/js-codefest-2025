@@ -45,7 +45,7 @@ const words = [
 		className: "font-HP tracking-wider",
 	},
 	{
-		text: "CodeFest?",
+		text: "CODEFEST?",
 		className: "text-primary font-HP",
 	},
 ];
@@ -63,15 +63,7 @@ const texts = [
 ];
 
 const ReasonPage = () => {
-	const { scrollY } = useScroll({
-		target: "#reason",
-	});
-
 	const ref = useRef(null);
-
-	const x = useTransform(scrollY, [0, 500, 1000], [-50, 200, -450]);
-	const y = useTransform(scrollY, [0, 500, 1000], [0, -100, -50]);
-	const scale = useTransform(scrollY, [0, 500, 1000], [1, 0.8, 1]);
 
 	const isViewed = useInView(ref);
 
@@ -80,35 +72,34 @@ const ReasonPage = () => {
 			<motion.div
 				ref={ref}
 				id="reason"
-				className="relative flex flex-col items-center justify-center h-screen scroll-smooth overflow-hidden"
+				className="relative flex flex-col items-center justify-center min-h-screen scroll-smooth overflow-hidden bg-base-200"
+				style={{
+					backgroundImage: `url(${bg})`,
+					backgroundSize: "cover",
+					backgroundPosition: "center",
+					backgroundRepeat: "no-repeat",
+					backgroundAttachment: "fixed",
+					// scale,
+					// y,
+				}}
 			>
 				<motion.div
 					// className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-cover bg-center"
-					className="min-h-screen w-full relative flex flex-col items-center justify-center"
-					style={{
-						backgroundImage: `url(${bg})`,
-						backgroundSize: "cover",
-						// backgroundPosition: "center",
-						backgroundRepeat: "no-repeat",
-						backgroundAttachment: "fixed",
-						// scale,
-						// y,
-					}}
+					className="w-full relative flex flex-col items-center justify-center"
 				>
-					{/* <motion.div
-						initial={{ opacity: 0 }}
-						whileInView={{ opacity: 1 }}
-						transition={{ duration: 0.5 }}
-						className="fixed left-1/2 transform translate-x-1/2 bottom-0 size-64 object-cover z-10"
+					<motion.div
+						initial={{ opacity: 0, x: -100, scale: 0.5 }}
+						whileInView={{ opacity: 1, x: 0, scale: 1 }}
+						transition={{ duration: 0.3, ease: "easeInOut" }}
+						className="absolute right-0 md:left-1/2 transform md:translate-x-1/2 bottom-0 size-64 object-cover z-10"
 						style={{
 							backgroundImage: `url(${hero})`,
 							backgroundSize: "cover",
 							backgroundPosition: "center",
-							x,
-							y,
-							scale,
+							// y,
 						}}
-					/> */}
+					/>
+
 					<AnimatePresence mode="wait">
 						{isViewed && (
 							<>
@@ -117,7 +108,7 @@ const ReasonPage = () => {
 									whileInView={{ opacity: 1, x: 0 }}
 									transition={{ duration: 1 }}
 									viewport={{ root: ref }}
-									className="text-4xl md:text-6xl lg:text-8xl font-bold z-10 m-8"
+									className="text-4xl md:text-6xl lg:text-8xl font-bold z-10"
 								>
 									<TypewriterEffect words={words} />
 								</motion.div>
@@ -130,7 +121,7 @@ const ReasonPage = () => {
 								initial={{ opacity: 0, scale: 0.8 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ duration: 0.5 }}
-								// className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]"
+								className="mt-24"
 							>
 								<Terminal>
 									<TypingAnimation>&gt; npx join-codefest@2025</TypingAnimation>
