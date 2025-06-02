@@ -1,113 +1,160 @@
-import { Link, useLocation } from "react-router";
 import { cn } from "../lib/utils"; // Assuming you have a utility function for classnames
-import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import { Link as ScrollLink } from "react-scroll";
+import font from "../assets/images/font.png";
+import { useState } from "react";
+const navItems1 = [
+	{ to: "homepage", label: "Trang chủ" },
+	{ to: "intro", label: "Giới thiệu" },
+	{ to: "information", label: "Thông tin" },
+];
+
+const navItems2 = [
+	{ to: "reason", label: "Quyền lợi" },
+	{ to: "timeline", label: "Timeline" },
+	{ to: "question", label: "FAQ" },
+];
 const Header = () => {
-	const location = useLocation();
-	const { scrollY } = useScroll();
-	const [hidden, setHidden] = useState(false);
-	useMotionValueEvent(scrollY, "change", (latest) => {
-		const previous = scrollY.getPrevious();
-		if (latest > previous) {
-			setHidden(true);
-		} else {
-			setHidden(false);
-		}
-	});
-
+	const [isOpen, setIsOpen] = useState(false);
+	const handleOpen = () => setIsOpen(!isOpen);
 	return (
-		<motion.header
-			id="header"
-			variants={{
-				hidden: {
-					y: "-100%",
-				},
-				visible: {
-					y: 0,
-				},
-			}}
-			initial="hidden"
-			animate={hidden ? "hidden" : "visible"}
-			transition={{ duration: 0.35, ease: "easeInOut", type: "spring" }}
-			className="fixed top-0 left-0 right-0 z-20 hidden md:flex p-4 z-10 uppercase font-bold text-xl text-[#1D2C48] bg-gradient-to-b from-[#f9f9f9] to-[#ffffff] backdrop-blur-lg shadow-xs border-b border-[#92ACFA] transition-all duration-300"
-		>
-			<div className="container mx-auto font-HP tracking-wider font-extrabold">
-				<nav className="grid grid-cols-7">
-					<Link
-						to="/"
-						className={cn(
-							"click col-span-1 flex items-center justify-center drop-shadow-blue-400 hover:text-[#92ACFA] transition-colors duration-300",
-							location.pathname === "/" ? "text-[#92ACFA]" : "text-[#1D2C48]"
-						)}
-					>
-						Trang chủ
-					</Link>
-					<Link
-						to="/intro"
-						className={cn(
-							"click col-span-1 flex items-center justify-center drop-shadow-blue-400 hover:text-[#92ACFA] transition-colors duration-300",
-							location.pathname === "/intro"
-								? "text-[#92ACFA]"
-								: "text-[#1D2C48]"
-						)}
-					>
-						Giới thiệu
-					</Link>
-					<Link
-						to="/information"
-						className={cn(
-							"click col-span-1 flex items-center justify-center drop-shadow-blue-400 hover:text-[#92ACFA] transition-colors duration-300",
-							location.pathname === "/information"
-								? "text-[#92ACFA]"
-								: "text-[#1D2C48]"
-						)}
-					>
-						Thông tin
-					</Link>
+		<>
+			<header
+				id="header"
+				className="fixed top-0 left-0 right-0 p-4 z-[1000] uppercase font-bold text-xl text-[#1D2C48] bg-gradient-to-b from-[#f9f9f9] to-[#ffffff] backdrop-blur-lg shadow-xs border-b border-[#92ACFA] transition-all duration-300"
+			>
+				{/* Desktop header  */}
+				<div className="hidden md:block container mx-auto font-HP tracking-wider">
+					<nav className="grid grid-cols-7">
+						{navItems1.map((item, index) => (
+							<ScrollLink
+								key={index}
+								to={item.to}
+								smooth={true}
+								duration={700}
+								spy={true}
+								activeClass="text-primary"
+								className="col-span-1 flex items-center justify-center stroke-2 stroke-primary cursor-pointer hover:text-secondary transition-colors duration-300"
+								offset={-100}
+							>
+								{item.label}
+							</ScrollLink>
+						))}
 
-					<div className="col-span-1 flex items-center justify-center font-extrabold">
-						<h1 className=" font-HP text-5xl " >
-							<span className="text-[#1D2C48]">CODE</span>
-							<span className="text-[#92ACFA]" style={{ textShadow: "4px 4px #1D2C48" }}>FEST</span>
-						</h1>
-					</div>
-					<Link
-						to="/reason"
-						className={cn(
-							"click col-span-1 flex items-center justify-center drop-shadow-blue-400 hover:text-[#92ACFA] transition-colors duration-300",
-							location.pathname === "/reason"
-								? "text-[#92ACFA]"
-								: "text-[#1D2C48]"
-						)}
+						<Logo className={"md:col-span-1"} />
+						{navItems2.map((item, index) => (
+							<ScrollLink
+								key={index}
+								to={item.to}
+								smooth={true}
+								duration={700}
+								spy={true}
+								activeClass="text-primary"
+								className="col-span-1 flex items-center justify-center stroke-2 stroke-primary cursor-pointer hover:text-secondary transition-colors duration-300"
+								offset={-100}
+							>
+								{item.label}
+							</ScrollLink>
+						))}
+					</nav>
+				</div>
+				{/* Mobile header  */}
+				<div className="md:hidden container mx-auto flex justify-between items-center font-HP tracking-wider">
+					<Logo />
+					<button className="btn btn-ghost" onClick={handleOpen}>
+						{isOpen ? <CloseIcon /> : <MenuIcon />}
+					</button>
+				</div>
+
+				{isOpen && (
+					<nav
+						className="flex flex-col items-center justify-center gap-4 font-HP tracking-wider z-10"
+						onClick={handleOpen}
 					>
-						Quyền lợi
-					</Link>
-					<Link
-						to="/timeline"
-						className={cn(
-							"click col-span-1 flex items-center justify-center drop-shadow-blue-400 hover:text-[#92ACFA] transition-colors duration-300",
-							location.pathname === "/timeline"
-								? "text-[#92ACFA]"
-								: "text-[#1D2C48]"
-						)}
-					>
-						Timeline
-					</Link>
-					<Link
-						to="/question"
-						className={cn(
-							"click col-span-1 flex items-center justify-center drop-shadow-blue-400 hover:text-[#92ACFA] transition-colors duration-300",
-							location.pathname === "/question"
-								? "text-[#92ACFA]"
-								: "text-[#1D2C48]"
-						)}
-					>
-						FAQ
-					</Link>
-				</nav>
-			</div>
-		</motion.header>
+						{navItems1.map((item, index) => (
+							<ScrollLink
+								key={index}
+								to={item.to}
+								smooth={true}
+								duration={700}
+								spy={true}
+								activeClass="text-primary"
+								className="col-span-1 flex items-center justify-center stroke-2 stroke-primary cursor-pointer hover:text-secondary transition-colors duration-300"
+								offset={-100}
+								onClick={handleOpen}
+							>
+								{item.label}
+							</ScrollLink>
+						))}
+						{navItems2.map((item, index) => (
+							<ScrollLink
+								key={index}
+								to={item.to}
+								smooth={true}
+								duration={700}
+								spy={true}
+								activeClass="text-primary"
+								className="col-span-1 flex items-center justify-center stroke-2 stroke-primary cursor-pointer hover:text-secondary transition-colors duration-300"
+								offset={-100}
+								onClick={handleOpen}
+							>
+								{item.label}
+							</ScrollLink>
+						))}
+					</nav>
+				)}
+			</header>
+		</>
 	);
 };
 
 export default Header;
+
+const Logo = ({ className }) => {
+	return (
+		<div
+			className={`flex items-center justify-center ${
+				className ? className : ""
+			}`}
+		>
+			<img src={font} alt="logo" className="w-36 md:w-[256px]" />
+		</div>
+	);
+};
+
+const MenuIcon = () => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			strokeWidth={1.5}
+			stroke="currentColor"
+			className="size-6"
+		>
+			<path
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+			/>
+		</svg>
+	);
+};
+
+const CloseIcon = () => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			strokeWidth={1.5}
+			stroke="currentColor"
+			className="size-6"
+		>
+			<path
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				d="M6 18 18 6M6 6l12 12"
+			/>
+		</svg>
+	);
+};

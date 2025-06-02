@@ -1,9 +1,10 @@
 export default function TimelineBar() {
 	return (
-		<div style={{ paddingLeft: 240, paddingRight: 240 }}>
+
+		<div className="md:px-60">
 			<ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical z-[2]">
 				<li>
-					<div className="timeline-middle btn btn-circle">
+					<div className="timeline-middle btn btn-circle btn-accent">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 24 24"
@@ -19,6 +20,7 @@ export default function TimelineBar() {
 					</div>
 
 					<div
+
 						className="timeline-start mb-14 md:text-end text-xl"
 						style={{ lineHeight: 2 }}
 					>
@@ -31,6 +33,7 @@ export default function TimelineBar() {
 						>
 							Mở đơn đăng ký
 						</div>
+
 						<p className="hidden md:block text-2sm md:text-l leading-[2rem] font-sans">
 							Các thí sinh đăng ký cá nhân hoặc theo đội (3 - 4 thành viên/đội).{" "}
 							Đối với các thí sinh đăng ký tự do, BTC sẽ hỗ trợ ghép đội cho phù
@@ -43,6 +46,7 @@ export default function TimelineBar() {
 					<hr className="bg-primary" />
 
 					<div className="timeline-middle btn btn-circle">
+
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 24 24"
@@ -57,10 +61,12 @@ export default function TimelineBar() {
 						</svg>
 					</div>
 					<div
+
 						className="timeline-end md:mb-10 text-xl"
 						style={{ lineHeight: 2 }}
 					>
 						<time className="font-HP italic text-secondary text-2xl btn btn-outline mb-2">
+
 							01/09 - 14/09
 						</time>
 						<div
@@ -69,6 +75,7 @@ export default function TimelineBar() {
 						>
 							Giai đoạn Training
 						</div>
+
 						<p className="hidden md:block text-l text-2sm leading-[1.75rem] font-sans">
 							Sau khi kết thúc vòng đăng ký, các đội thi bước vào vòng training
 							với sự hướng dẫn của những mentor dày dặn kinh nghiệm, được cung
@@ -83,6 +90,7 @@ export default function TimelineBar() {
 				<li>
 					<hr className="bg-primary" />
 					<div className="timeline-middle btn btn-circle">
+
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 26 24"
@@ -97,11 +105,13 @@ export default function TimelineBar() {
 						</svg>
 					</div>
 					<div
+
 						className="timeline-start mb-10 md:text-end text-xl"
 						style={{ lineHeight: 2 }}
 					>
 						<time className="font-HP italic text-secondary text-2xl btn btn-outline mb-2">
 							15/09/2024
+
 						</time>
 						<div
 							className="text-4xl font-black text-primary font-Treacherous mb-6"
@@ -118,6 +128,7 @@ export default function TimelineBar() {
 					<hr className="bg-primary" />
 				</li>
 			</ul>
+
 		</div>
 	);
 }

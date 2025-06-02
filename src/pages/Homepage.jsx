@@ -1,5 +1,6 @@
 // Đây chính là Hero section
 import bgImg from "../assets/images/nencover_resize.png";
+import bgImg2 from "../assets/images/poster.webp";
 import hero from "../assets/images/hero_back.webp";
 import hrShadow from "../assets/images/hero_shadow.webp";
 import sqr from "../assets/images/square.webp";
@@ -17,6 +18,7 @@ import font from "../assets/images/font.png";
 import nut from "../assets/images/khung.png";
 import light2 from "../assets/images/2cloud_light.png";
 
+
 import {
 	MouseParallaxContainer,
 	MouseParallaxChild,
@@ -33,7 +35,10 @@ const Homepage = () => {
 		target: ref,
 		offset: ["start end", "end start"],
 	});
-	const scale = useTransform(scrollY, [0, 500, 100], [1, 0.8, 0.5]);
+
+	const scale = useTransform(scrollY, [0, 500, 1000], [1, 0.8, 0.5]);
+	const scaleFont = useTransform(scrollY, [0, 500, 1000], [1, 1.2, 1.6]);
+	const scaleCong = useTransform(scrollY, [0, 500, 1000], [1, 2, 2.5]);
 	const turnL = useTransform(scrollY, [0, 500], [0, -5000]);
 	const turnR = useTransform(scrollY, [0, 500], [0, 5000]);
 	const y = useTransform(scrollY, [0, 500, 1000], [0, -100, -50]);
@@ -68,6 +73,7 @@ const Homepage = () => {
 						}}
 					></div>
 
+
 					<motion.img
 						className="absolute bottom-[-4%] left-[0%] w-600 h-200 z-10"
 						style={{
@@ -88,6 +94,7 @@ const Homepage = () => {
 							backgroundSize: "contain",
 							backgroundPosition: "center",
 							transform: "scaleX(1)",
+
 							opacity: khoiOpacity,
 							// translateY: onTop,
 							// x: turnL,
@@ -97,7 +104,9 @@ const Homepage = () => {
 					<MouseParallaxChild
 						factorX={0.5}
 						factorY={0.3}
+
 						className="absolute top-[-15%] left-[-16%] w-180 h-200 z-10"
+
 					>
 						<motion.img src={tree2} alt="tree" style={{ x: turnR }} />
 					</MouseParallaxChild>
@@ -105,7 +114,9 @@ const Homepage = () => {
 					<MouseParallaxChild
 						factorX={0.2}
 						factorY={0.4}
+
 						className="absolute top-[10%] left-[5%] w-140 h-160 z-10"
+
 					>
 						<motion.img
 							src={drG}
@@ -114,6 +125,7 @@ const Homepage = () => {
 							style={{ x: turnR }}
 						/>
 					</MouseParallaxChild>
+
 
 					<MouseParallaxChild
 						factorX={0.5}
@@ -127,6 +139,7 @@ const Homepage = () => {
 						factorX={0.2}
 						factorY={0.4}
 						className="absolute right-[15%] top-[-6%] w-140 h-140 z-10"
+
 					>
 						<motion.img
 							src={tran}
@@ -135,6 +148,7 @@ const Homepage = () => {
 							className="absolute inset-0"
 						/>
 					</MouseParallaxChild>
+
 					<MouseParallaxChild
 						
 						className="absolute w-420 bottom-[-45%] right-[-8%] h-180 z-10"
@@ -242,6 +256,7 @@ const Homepage = () => {
 */}
 					<motion.div
 						className="absolute font-Treacherous text-xl bottom-[20%] left-[12%] h-30 z-10 flex gap-[0px]"
+
 						style={{ scale, y }}
 					>
 						<CountdownTimer />
@@ -250,7 +265,9 @@ const Homepage = () => {
 					<a href="https://docs.google.com/document/u/0/">
 						<div>
 							<motion.div
+
 								className="absolute w-76 bottom-[6.6%] left-[38.5%] h-22 z-10"
+
 								style={{
 									backgroundImage: `url(${nut})`,
 									backgroundSize: "contain",
@@ -259,6 +276,7 @@ const Homepage = () => {
 									scale,
 									y,
 								}}
+
 							></motion.div>
 
 							<motion.div
@@ -272,17 +290,21 @@ const Homepage = () => {
 					
 					<motion.div
 						className="absolute w-140 bottom-[26%] left-[29.6%] h-70 z-10"
+
 						style={{
 							backgroundImage: `url(${font})`,
 							backgroundSize: "contain",
 							backgroundPosition: "center",
 							backgroundRepeat: "no-repeat",
+
 							// y: onBottom,
+
 						}}
 					></motion.div>
 				</motion.div>
 			</MouseParallaxContainer>
 		</>
+
 	);
 };
 

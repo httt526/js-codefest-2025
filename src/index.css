@@ -20,8 +20,29 @@
 	src: url("./assets/fonts/CCTREACHEROUSCURVES.TTF") format("truetype");
 }
 
+@font-face {
+	font-family: "EasyCome";
+	src: url("./assets/fonts/EasyCome.ttf") format("truetype");
+}
+
 @theme {
 	--font-HP: "Harry Potter", sans-serif;
 	--font-Teddy: "Teddy Bear", sans-serif;
 	--font-Treacherous: "Treacherous Curves", sans-serif;
+	--font-EasyCome: "EasyCome", sans-serif;
+}
+
+@theme inline {
+	--animate-scroll: scroll var(--animation-duration, 40s)
+		var(--animation-direction, forwards) linear infinite;
+
+	@keyframes scroll {
+		to {
+			transform: translate(calc(-50% - 0.5rem));
+		}
+	}
+}
+
+.icon-fill {
+	fill: #92ACFA !important;
 }

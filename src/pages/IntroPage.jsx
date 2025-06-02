@@ -1,6 +1,8 @@
+
 import bg from "../assets/images/nencover_resize.png";
 import map from "../assets/images/bang4.webp";
 import hero from "../assets/images/hero3.webp";
+
 // import ParallaxSection from "../components/ParallaxSection";
 import React, { useState, useEffect } from "react";
 import { useRef } from "react";
@@ -11,6 +13,7 @@ import {
 	useInView,
 	AnimatePresence,
 } from "motion/react";
+
 
 const words = [
 	{
@@ -31,11 +34,13 @@ const words = [
 	},
 ];
 
+
 const IntroPage = () => {
 	const ref = useRef(null);
 	const { scrollY } = useScroll({ target: ref });
 	const isViewed = useInView(ref);
 	return (
+
 		<>
 			<motion.div
 				id="intro"
@@ -103,6 +108,7 @@ const IntroPage = () => {
 				></motion.div>
 			</div>
 		</>
+
 	);
 };
 
